@@ -26,17 +26,6 @@
       <xsl:apply-templates select="node()|comment()|@*" />
     </xsl:copy>
 
-    <xsl:comment> Alerts </xsl:comment>
-    <jms-topic name="HawkularAlertData" entries="java:/topic/HawkularAlertData"/>
-    <jms-queue name="HawkularAlertsPluginsQueue" entries="java:/queue/HawkularAlertsPluginsQueue"/>
-    <jms-queue name="HawkularAlertsActionsResponseQueue" entries="java:/queue/HawkularAlertsActionsResponseQueue"/>
-    <jms-topic name="HawkularAlertsActionsTopic" entries="java:/topic/HawkularAlertsActionsTopic"/>
-
-    <xsl:comment> Metrics </xsl:comment>
-    <jms-queue name="hawkular/metrics/gauges/new" entries="java:/queue/hawkular/metrics/gauges/new java:jboss/exported/queue/hawkular/metrics/gauges/new"/>
-    <jms-queue name="hawkular/metrics/counters/new" entries="java:/queue/hawkular/metrics/counters/new java:jboss/exported/queue/hawkular/metrics/counters/new"/>
-    <jms-queue name="hawkular/metrics/availability/new" entries="java:/queue/hawkular/metrics/availability/new java:jboss/exported/queue/hawkular/metrics/availability/new"/>
-
     <xsl:comment> Hawkular/Glue </xsl:comment>
     <jms-topic name="HawkularCommandEvent" entries="java:/queue/HawkularCommandEvent"/>
     <jms-topic name="HawkularQueue" entries="java:/queue/HawkularQueue"/>

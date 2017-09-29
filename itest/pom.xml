@@ -116,32 +116,6 @@
     </dependency>
 
     <dependency>
-      <groupId>org.hawkular.commons</groupId>
-      <artifactId>hawkular-commons-embedded-cassandra-war</artifactId>
-      <type>war</type>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.hawkular.commons</groupId>
-      <artifactId>hawkular-inventory-api</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.hawkular.commons</groupId>
-      <artifactId>hawkular-inventory-json-helper</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.hawkular.metrics</groupId>
-      <artifactId>hawkular-metrics-model</artifactId>
-      <version>${version.org.hawkular.metrics}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
       <groupId>org.hawkular.services</groupId>
       <artifactId>hawkular-services-dist</artifactId>
       <type>zip</type>
@@ -240,11 +214,7 @@
         <hawkular.log.bus>INFO</hawkular.log.bus>
         <hawkular.log.cmdgw>INFO</hawkular.log.cmdgw>
         <hawkular.log.inventory>INFO</hawkular.log.inventory>
-        <hawkular.log.inventory.rest.requests>INFO</hawkular.log.inventory.rest.requests>
-        <hawkular.log.metrics>INFO</hawkular.log.metrics>
         <hawkular.log.nest>INFO</hawkular.log.nest>
-        <hawkular.log.datastax.driver>INFO</hawkular.log.datastax.driver>
-        <hawkular.log.cassandra>INFO</hawkular.log.cassandra>
 
         <hawkular.log.rest.test>TRACE</hawkular.log.rest.test><!-- log level for all itests -->
         <hawkular.log.adhoc.name>dummy</hawkular.log.adhoc.name> <!-- put a logger name here that you want to debug, such as org.hawkular.services.rest.test.InventoryITest -->
@@ -274,23 +244,6 @@
                     </artifactItem>
 
                   </artifactItems>
-                </configuration>
-              </execution>
-              <execution>
-                <id>deploy-itest-components</id>
-                <phase>pre-integration-test</phase>
-                <goals>
-                  <goal>copy</goal>
-                </goals>
-                <configuration>
-                  <artifactItems>
-                    <artifactItem>
-                      <groupId>org.hawkular.commons</groupId>
-                      <artifactId>hawkular-commons-embedded-cassandra-war</artifactId>
-                      <type>war</type>
-                    </artifactItem>
-                  </artifactItems>
-                  <outputDirectory>${project.build.directory}/${hawkular.services.dist.finalName}/modules/system/layers/hawkular/org/hawkular/nest/main/deployments/</outputDirectory>
                 </configuration>
               </execution>
             </executions>
@@ -441,11 +394,7 @@
                     -Dhawkular.log.bus=${hawkular.log.bus}
                     -Dhawkular.log.cmdgw=${hawkular.log.cmdgw}
                     -Dhawkular.log.inventory=${hawkular.log.inventory}
-                    -Dhawkular.log.metrics=${hawkular.log.metrics}
                     -Dhawkular.log.nest=${hawkular.log.nest}
-                    -Dhawkular.log.datastax.driver=${hawkular.log.datastax.driver}
-                    -Dhawkular.log.cassandra=${hawkular.log.cassandra}
-                    -Dhawkular.backend=embedded_cassandra
                     -Djboss.modules.system.pkgs=org.jboss.byteman,org.jboss.logmanager
                     -Djava.util.logging.manager=org.jboss.logmanager.LogManager
                     -javaagent:${project.build.directory}/${hawkular.services.dist.finalName}/bin/hawkular-javaagent.jar=config=${project.build.directory}/${hawkular.services.dist.finalName}/standalone/configuration/hawkular-javaagent-minimal-config.yaml,delay=60

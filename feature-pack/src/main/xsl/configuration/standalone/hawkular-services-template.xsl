@@ -22,23 +22,6 @@
 
   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes" xalan:indent-amount="4" standalone="no" />
 
-  <xsl:param name="hawkular.embeddedc" select="'false'"/>
-
-  <!-- Add the embedded cassandra if it was passed in through the parameters -->
-  <xsl:template match="/*[local-name()='server']/*[local-name()='management']">
-    <system-properties>
-      <xsl:if test="$hawkular.embeddedc = 'true'">
-        <xsl:element name="property" namespace="{namespace-uri()}">
-          <xsl:attribute name="name">hawkular.backend</xsl:attribute>
-          <xsl:attribute name="value">embedded_cassandra</xsl:attribute>
-        </xsl:element>
-      </xsl:if>
-    </system-properties>
-    <xsl:copy>
-      <xsl:apply-templates select="node()|comment()|@*"/>
-    </xsl:copy>
-  </xsl:template>
-
   <!-- copy everything else as-is -->
   <xsl:template match="node()|comment()|@*">
     <xsl:copy>

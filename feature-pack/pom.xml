@@ -87,9 +87,9 @@
     </dependency>
 
     <dependency>
-      <groupId>org.hawkular.metrics</groupId>
-      <artifactId>hawkular-metrics-component-dist</artifactId>
-      <type>ear</type>
+      <groupId>org.hawkular.alerts</groupId>
+      <artifactId>hawkular-alerts-rest-standalone</artifactId>
+      <type>war</type>
     </dependency>
 
     <dependency>
@@ -269,21 +269,6 @@
 
                 <transformationSet>
                   <dir>${project.build.directory}/feature-pack-resources</dir>
-                  <stylesheet>${basedir}/src/main/xsl/subsystem-templates/hawkular-services-infinispan.xsl</stylesheet>
-                  <includes>
-                    <include>subsystem-templates/infinispan.xml</include>
-                  </includes>
-                  <outputDir>${project.build.directory}/feature-pack-resources</outputDir>
-                  <fileMappers>
-                    <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
-                      <pattern>^.*$</pattern>
-                      <replacement>subsystem-templates/hawkular-services-infinispan.xml</replacement>
-                    </fileMapper>
-                  </fileMappers>
-                </transformationSet>
-
-                <transformationSet>
-                  <dir>${project.build.directory}/feature-pack-resources</dir>
                   <stylesheet>${basedir}/src/main/xsl/subsystem-templates/hawkular-services-undertow.xsl</stylesheet>
                   <includes>
                     <include>subsystem-templates/undertow.xml</include>
@@ -447,46 +432,6 @@
         </plugins>
       </build>
     </profile>
-
-    <profile>
-      <!-- A profile to build a distro that includes embedded cassandra -->
-      <id>embeddedc</id>
-      <dependencies>
-        <dependency>
-          <groupId>org.hawkular.commons</groupId>
-          <artifactId>hawkular-commons-embedded-cassandra-war</artifactId>
-          <type>war</type>
-        </dependency>
-      </dependencies>
-      <properties>
-        <hawkular.embeddedc>true</hawkular.embeddedc>
-        <feature-pack-build-xml>target/feature-pack-config/feature-pack-build.xml</feature-pack-build-xml>
-      </properties>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>generate-feature-pack-build-xml-with-embedded-cassandra</id>
-                <phase>generate-resources</phase>
-                <goals>
-                  <goal>run</goal>
-                </goals>
-                <configuration>
-                  <tasks>
-                    <copy file="${basedir}/feature-pack-build.xml" tofile="${feature-pack-build-xml}" />
-                    <replaceregexp file="${feature-pack-build-xml}" match="&lt;/copy-artifacts&gt;" replace=" &lt;copy-artifact artifact=&quot;org.hawkular.commons:hawkular-commons-embedded-cassandra-war&quot; to-location=&quot;modules/system/layers/hawkular/org/hawkular/nest/main/deployments/hawkular-commons-embedded-cassandra-war.war&quot; /&gt;&#xA; &lt;/copy-artifacts&gt;" />
-                  </tasks>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
   </profiles>
 
 </project>
