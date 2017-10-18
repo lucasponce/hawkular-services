@@ -25,7 +25,7 @@ The docker-maven-plugin can be used to create a Dockerfile, and add the docker i
 
   mvn docker:build
 
-By default, this will create a docker image with the name "<username>/hawkular-services".
+By default, this will create a docker image with the name "<username>/hawkular-services". Pass in "-Ddocker.repo.name=something" to change the repo name (e.g. "something/hawkular-services").
 
   docker images
 
