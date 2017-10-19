@@ -22,7 +22,7 @@
 
   <parent>
     <groupId>org.hawkular.services</groupId>
-    <artifactId>hawkular-services</artifactId>
+    <artifactId>hawkular-services-feature-pack-parent</artifactId>
     <version>0.40.0.Final-SNAPSHOT</version>
   </parent>
 
@@ -49,6 +49,28 @@
       <artifactId>hawkular-status</artifactId>
       <type>war</type>
       <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hawkular.services</groupId>
+      <artifactId>hawkular-inventory-service</artifactId>
+      <type>war</type>
+      <version>${project.version}</version>
+    </dependency>
+
+<!-- TODO: Add when moving to Prometheus/Alerts 1.8
+    <dependency>
+      <groupId>org.hawkular.services</groupId>
+      <artifactId>hawkular-services-alerts</artifactId>
+      <type>war</type>
+    </dependency>
+-->
+
+<!-- TODO: Remove when moving to Prometheus -->
+    <dependency>
+      <groupId>org.hawkular.metrics</groupId>
+      <artifactId>hawkular-metrics-component-dist</artifactId>
+      <type>ear</type>
     </dependency>
 
     <dependency>
@@ -84,12 +106,6 @@
     <dependency>
       <groupId>org.hawkular.agent</groupId>
       <artifactId>hawkular-wildfly-agent-installer</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.hawkular.metrics</groupId>
-      <artifactId>hawkular-metrics-component-dist</artifactId>
-      <type>ear</type>
     </dependency>
 
     <dependency>
