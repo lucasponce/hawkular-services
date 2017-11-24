@@ -28,8 +28,8 @@ JBOSS_DATA_DIR=${JBOSS_HOME}/standalone/data/prometheus
 
 docker run \
   -p 9090:9090 \
-  -v ${SCRIPT_BASEDIR}/prometheus.yml:/prometheus.yml \
-  -v ${JBOSS_DATA_DIR}:/var/hawkular/data/prometheus \
+  -v ${SCRIPT_BASEDIR}/prometheus.yml:/prometheus.yml:Z \
+  -v ${JBOSS_DATA_DIR}:/var/hawkular/data/prometheus:z \
   --net="host" \
   prom/prometheus:v2.0.0 \
     --config.file=/prometheus.yml \

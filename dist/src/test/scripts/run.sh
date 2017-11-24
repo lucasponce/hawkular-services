@@ -39,7 +39,7 @@ start()  {
   docker run \
     --detach \
     --publish 8080:8080 \
-    --volume ${HAWKULAR_DATA}:/var/hawkular \
+    --volume ${HAWKULAR_DATA}:/var/hawkular:z \
     --net "host" \
     --env HAWKULAR_DATA=/var/hawkular \
     ${HAWKULAR_SERVICES_IMAGE}
@@ -47,9 +47,9 @@ start()  {
   docker run \
     --detach \
     --publish 9090:9090 \
-    --volume ${HAWKULAR_DATA}:/var/hawkular \
+    --volume ${HAWKULAR_DATA}:/var/hawkular:z \
     --net "host" \
-    --volume ${SCRIPT_BASEDIR}/prometheus.yml:/prometheus.yml \
+    --volume ${SCRIPT_BASEDIR}/prometheus.yml:/prometheus.yml:Z \
     ${PROMETHEUS_IMAGE} \
       --config.file=/prometheus.yml
 }
