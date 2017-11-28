@@ -37,33 +37,11 @@
               this.commit = response["Built-From-Git-SHA1"];
             }
           },
-          metrics: {
-            name: "metrics",
-            url: "hawkular/metrics/status",
-            processResponse: function(response) {
-              this.isReady = (response.MetricsService == "STARTED");
-              switch(response.MetricsService) {
-                case "STARTING":
-                  this.status = "Starting";
-                  break;
-                case "STOPPED":
-                  this.status = "Stopped";
-                  break;
-                case "FAILED":
-                  this.status = "Failed to start";
-                  break;
-                default:
-                  this.status = response.MetricsService;
-              }
-              this.version = response["Implementation-Version"];
-              this.commit = response["Built-From-Git-SHA1"];
-            }
-          },
           alerts: {
             name: "alerts",
             url: "hawkular/alerts/status",
             processResponse: function (response) {
-              this.isReady = (response.status == "STARTED");
+              this.isReady = (response.status == "UP");
               if (response.status == "FAILED") {
                 this.status = "Failed to start";
               } else {
@@ -130,7 +108,6 @@
 
        window.setInterval(function () {
          statusRequest(services.services);
-         statusRequest(services.metrics);
          statusRequest(services.alerts);
          statusRequest(services.inventory);
        }, 3000); // repeat forever, polling every 3 seconds
@@ -152,7 +129,6 @@
         <div class="note">
           <table>
             <tr><td>Hawkular Services:  </td><td><span id="services_available"   class="available">Please wait...</span></td><td><span id="services_version"  ></span></td><td><span id="services_unavailable"   class="unavailable"></span></td></tr>
-            <tr><td>Hawkular Metrics:  </td><td><span id="metrics_available"   class="available">Please wait...</span></td><td><span id="metrics_version"  ></span></td><td><span id="metrics_unavailable"   class="unavailable"></span></td></tr>
             <tr><td>Hawkular Alerts:   </td><td><span id="alerts_available"    class="available">Please wait...</span></td><td><span id="alerts_version"   ></span></td><td><span id="alerts_unavailable"    class="unavailable"></span></td></tr>
             <tr><td>Hawkular Inventory:   </td><td><span id="inventory_available"    class="available">Please wait...</span></td><td><span id="inventory_version"   ></span></td><td><span id="inventory_unavailable"    class="unavailable"></span></td></tr>
           </table>
