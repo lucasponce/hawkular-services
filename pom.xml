@@ -69,7 +69,7 @@
 
   <properties>
     <version.javaee.spec>7.0</version.javaee.spec>
-    <version.org.hawkular.agent>2.0.0.Alpha1-SRC-revision-c3f6e15aea22c4729c062f65183add53b3581c11</version.org.hawkular.agent>
+    <version.org.hawkular.agent>2.0.0.Alpha1-SRC-revision-f8ec4dad6d5825290f66c81174eeabe7757a887f</version.org.hawkular.agent>
     <version.org.hawkular.alerts>1.8.0.Final-SRC-revision-2251cec0bda95700b0c20378ebc1565bc908be00</version.org.hawkular.alerts>
     <version.org.hawkular.commons>1.0.0.Final-SRC-revision-ec8d91bb9c7384bc2b261c083ce0090b53dfb1d8</version.org.hawkular.commons>
     <version.org.jboss.arquillian>1.1.11.Final</version.org.jboss.arquillian>
