@@ -45,7 +45,6 @@ config['managed-servers']['remote-dmr'][0]['enabled'] = true
 config['managed-servers']['remote-dmr'][0]['port'] = template('jboss.management.http.port', 9990)
 config['managed-servers']['remote-dmr'][0]['username'] = template('hawkular.rest.user')
 config['managed-servers']['remote-dmr'][0]['password'] = template('hawkular.rest.password')
-config['managed-servers']['remote-dmr'][0]['resource-type-sets'].add('Hawkular')
 
 parser.dump(config, new FileWriter(JAVAAGENT_CONFIG))
 
