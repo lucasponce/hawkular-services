@@ -23,7 +23,7 @@
 
 SCRIPT_BASEDIR=$(dirname $(readlink -f "$0"))
 TARGET_DIR=$(readlink -f ${SCRIPT_BASEDIR}/../../../target)
-JBOSS_HOME=$(readlink -f ${TARGET_DIR}/hawkular-services-dist-*)
+JBOSS_HOME=$(readlink -f ${TARGET_DIR}/hawkular-services-dist-*/)
 JBOSS_DATA_DIR=${JBOSS_HOME}/standalone/data/prometheus
 
 docker run \
