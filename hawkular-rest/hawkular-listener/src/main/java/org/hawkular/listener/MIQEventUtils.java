@@ -47,7 +47,7 @@ public class MIQEventUtils {
 
         if (SERVER_TYPES.contains(resourceType)) {
             String eventId = RESOURCE_ADDED + "_" + feedId + "_" + resourceId;
-            String message = "Added: " + resourceType;
+            String message = String.format("Added %s: %s", resourceType, resourceId);
 
             utils.addEvent(eventId, true, feedId, resourceId, "Inventory Change", message, "hawkular_event",
                     "MiddlewareServer", message);
@@ -61,7 +61,7 @@ public class MIQEventUtils {
         }
 
         if (availType.equals(SERVER_AVAILABILITY_NAME)) {
-            String message = "Avail change [" + newAvail + "]: " + availType;
+            String message = String.format("Avail change: %s [%s]", resourceId, availType);
 
             utils.addEvent(null, false, feedId, resourceId, "Inventory Change", message, "hawkular_event",
                     "MiddlewareServer", message);
