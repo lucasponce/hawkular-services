@@ -64,7 +64,7 @@ public class AgentITest extends AbstractTestBase {
                                                 "[%s] should have a resource with an id of [%s]",
                                                 testResponse.getRequest(), wfServerId));
                                 Assert.assertTrue(dequote(foundResources.get("config").get("Server State").toString())
-                                        .equals("running"),
+                                        .equals("reload-required"),
                                         String.format(
                                                 "[%s] should have a config 'Server State' with value 'running'",
                                                 foundResources.get("config")));
